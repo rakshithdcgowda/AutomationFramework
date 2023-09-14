@@ -1,0 +1,129 @@
+{
+	"info": {
+		"_postman_id": "7f8f8d57-968e-49ff-aa73-ea14df2c3053",
+		"name": "Practice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23382894",
+		"_collection_link": "https://www.postman.com/rakshithdc1997/workspace/apitesting-practice/collection/23382894-7f8f8d57-968e-49ff-aa73-ea14df2c3053?action=share&creator=23382894&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "AddBook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"//Getting entire response body data\r",
+							"const jsondata=pm.response.json();\r",
+							"//setting the environment variable with specific ID in the respose body data\r",
+							"pm.environment.set(\"book_id\", jsondata.ID);\r",
+							"//Getting msg value from the response body data\r",
+							"const ConfirmationMsg = jsondata.Msg;\r",
+							"pm.test(\"Validate the response\", function()\r",
+							"{\r",
+							"//validating the confirmation msg\r",
+							"pm.expect(ConfirmationMsg).eql(\"successfully added\");\r",
+							"//Validationg the status code\r",
+							"pm.response.to.have.status(200);\r",
+							"//validating response time\r",
+							"pm.expect(pm.response.responseTime).to.below(1000);\r",
+							"//Validating String present in the response\r",
+							"pm.expect(pm.response.text()).to.include(\"successfully added\");\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const company=pm.globals.get(\"companyCode\");\r",
+							"const randomnum=pm.variables.replaceIn('{{$randomInt}}');\r",
+							"pm.collectionVariables.set(\"isbn\",company+randomnum);\r",
+							"console.log(pm.collectionVariables.get(\"isbn\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n\"name\":\"Learn Appium Automation with Java\",\r\n\"isbn\":\"{{isbn}}\",\r\n\"aisle\":\"227\",\r\n\"author\":\"John foe\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/Library/Addbook.php",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Library",
+						"Addbook.php"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetBookDetails",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/Library/GetBook.php?ID={{book_id}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"Library",
+						"GetBook.php"
+					],
+					"query": [
+						{
+							"key": "ID",
+							"value": "{{book_id}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "isbn",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

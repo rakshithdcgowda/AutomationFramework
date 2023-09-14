@@ -1,0 +1,180 @@
+{
+	"info": {
+		"_postman_id": "ecc26d4b-e6a2-4af3-b69b-caa9058cb76d",
+		"name": "SoapPractice",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "23382894",
+		"_collection_link": "https://www.postman.com/rakshithdc1997/workspace/apitesting-practice/collection/23382894-ecc26d4b-e6a2-4af3-b69b-caa9058cb76d?action=share&creator=23382894&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Number2Word",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"const XmlResponse = xml2Json(pm.response.text());\r",
+							"console.log(XmlResponse);\r",
+							"\r",
+							"pm.test(\"Validate String of response\",function()\r",
+							"{\r",
+							"const actualValue =XmlResponse[\"soap:Envelope\"][\"soap:Body\"][\"m:NumberToWordsResponse\"][\"m:NumberToWordsResult\"];\r",
+							"\r",
+							"pm.expect(pm.collectionVariables.get(\"expectedval\")).to.be.eql(actualValue);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validate \", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200);\r",
+							"\r",
+							"    pm.expect(pm.response.text()).to.include(pm.collectionVariables.get(\"expectedval\"))\r",
+							"\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/soap+xml; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n\r\n<soap12:Envelope xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">\r\n  <soap12:Body>\r\n    <NumberToWords xmlns=\"http://www.dataaccess.com/webservicesserver/\">\r\n      <ubiNum>{{number}}</ubiNum>\r\n    </NumberToWords>\r\n  </soap12:Body>\r\n</soap12:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.dataaccess.com/webservicesserver/NumberConversion.wso",
+					"protocol": "https",
+					"host": [
+						"www",
+						"dataaccess",
+						"com"
+					],
+					"path": [
+						"webservicesserver",
+						"NumberConversion.wso"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Number2Dollar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const jsondata = xml2Json(pm.response.text());\r",
+							"console.log(jsondata);\r",
+							"\r",
+							"pm.test(\"Validate the text\", function()\r",
+							"{\r",
+							"    pm.response.to.have.status(200);\r",
+							"    const actualValue =jsondata[\"soap:Envelope\"][\"soap:Body\"][\"m:NumberToDollarsResponse\"][\"m:NumberToDollarsResult\"];\r",
+							"\r",
+							"    pm.expect(pm.collectionVariables.get(\"Expdollar\")).to.be.eql(actualValue);\r",
+							"\r",
+							"    \r",
+							"})"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/soap+xml; charset=utf-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n<soap12:Envelope xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">\r\n  <soap12:Body>\r\n    <NumberToDollars xmlns=\"http://www.dataaccess.com/webservicesserver/\">\r\n      <dNum>{{number}}</dNum>\r\n    </NumberToDollars>\r\n  </soap12:Body>\r\n</soap12:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://www.dataaccess.com/webservicesserver/NumberConversion.wso",
+					"protocol": "https",
+					"host": [
+						"www",
+						"dataaccess",
+						"com"
+					],
+					"path": [
+						"webservicesserver",
+						"NumberConversion.wso"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "number",
+			"value": "400",
+			"type": "string"
+		},
+		{
+			"key": "expectedval",
+			"value": "four hundred",
+			"type": "string"
+		},
+		{
+			"key": "Expdollar",
+			"value": "four hundred dollars",
+			"type": "string"
+		}
+	]
+}

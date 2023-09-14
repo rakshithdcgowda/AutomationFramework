@@ -1,0 +1,28 @@
+Xpaths:
+
+Locators:
+ ##### For Reference 		######	
+	//	public By  = By.id("");
+	//	public By  = By.xpath("");
+	//	public By  = By.name("");
+	//	public By  = By.classname("");
+	//	public By  = By.linktext("");
+	//	public By  = By.partiallinktext("");
+	//	public By  = By.tagname("");
+	// ##### For Reference 		######
+
+
+
+Xpaths:-
+
+
+
+
+
+
+
+
+1) Text Box
+//span[text()='{0}']/ancestor::label/following-sibling::div[contains(@class, 'x-form-text-field-body-default  ')]//input
+
+2)

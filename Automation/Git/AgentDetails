@@ -1,0 +1,9 @@
+Agent Name	              Machine Name	          Agent Path	                                             Run Command
+AUFLITEROSSAGENT	    DGA1WKS07ROSQA	     C:\SW\vsts-agent-win-x64-2.194.0	                             .\run.cmd
+AUFLITEROSSAGENT2	    DGA1WKS03ROSQA	     C:\AUFLite2	                                                  .\run.cmd
+ROSSDBBACKUP	        ATROIB01WIN2016	     C:\Agent_Ross_DB_Backup_New\vsts-agent-win-x64-2.200.0	           .\run.cmd
+ROSSDBRESTORE	        ATREM01WIN2016	     C:\agent_2022\vsts-agent-win-x64-2.198.3	                       .\run.cmd
+APP22DBRESTORE	        DGA1APP22ROSSQA	     C:\AzureDBRestoreNew\vsts-agent-win-x64-2.198.3	               .\run.cmd
+			
+Username	autotest1		
+Password	8g42Buv37JP9F4S5		

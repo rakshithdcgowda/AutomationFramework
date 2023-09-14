@@ -1,0 +1,30 @@
+package JavaProgramming;
+
+public class Juno {
+
+	public static void main(String[] args) {
+
+
+		 String str="juno bank and app";
+	        char[] arr=str.toCharArray();
+	        String RepeatingChars="";
+	        String NonRepeatingChars="";
+	        
+	        for(int i=0;i<arr.length;i++)
+	        {
+	            
+	            for(int j=i+1;j<arr.length;j++)
+	            {
+	                if(arr[i]!=arr[j])
+	                {
+	               System.out.print(arr[i]);
+	            }
+	          //  NonRepeatingChars=NonRepeatingChars+arr[i];
+	            
+	        }
+	     //  System.out.print(NonRepeatingChars);
+
+	}
+
+}
+}

@@ -1,0 +1,57 @@
+package JavaProgramming;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class CountOccuranceword {
+
+	public static void main(String[] args) {
+	
+		countwords();
+		
+		
+		/*
+		 * String str="Welcome to code decode and code decode Welcome you";
+		 * 
+		 * List<String> words = Arrays.asList(str.split(" "));
+		 * 
+		 * Map<String, Long> map =
+		 * words.stream().collect(Collectors.groupingBy(Function.identity(),
+		 * Collectors.counting()));
+		 * 
+		 * System.out.println(map);
+		 */
+		 
+	}
+	
+	public static void countwords()
+	{
+        String str="Welcome to code decode and code decode Welcome you";
+		
+		List<String> words = Arrays.asList(str.split(" "));
+		
+		int count=1;
+		
+		Map<String,Integer> map=new HashMap<String,Integer>();
+		
+		for(int i=0;i<words.size();i++)
+		{
+			for(int j=0;j<words.size();j++)
+			{
+				if(words.get(i)==words.get(j))
+				{
+					count++;
+				}
+			}
+			map.put(words.get(i), count);
+			count=1;
+		}
+		
+		System.out.println(map);
+	}
+
+}

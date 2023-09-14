@@ -1,0 +1,29 @@
+
+public class VictoriaSecrets {
+
+	public static void main(String[] args) {
+		
+		
+		//input:- "ABC" And "PQRST"
+		//OUTPUT:- APBQCRST
+		
+		String str1="ABC";
+		String str2="PQRST";
+		String str3="";
+		
+		for(int i=0;i<str2.length();i++)
+		{
+			if(i<str1.length())
+			{
+				str3=str3+str1.charAt(i)+str2.charAt(i);
+			}else {
+				str3=str3+str2.charAt(i);
+			}
+		}
+		System.out.print(str3);
+		
+		
+
+	}
+
+}

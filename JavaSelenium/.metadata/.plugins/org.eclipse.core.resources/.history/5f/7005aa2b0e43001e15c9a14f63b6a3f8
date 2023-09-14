@@ -1,0 +1,30 @@
+package Programming;
+
+public class ReturnDuplicatePresentinbothArrays {
+
+	public static void main(String[] args) {
+		
+		int[] arr= {2,3,4,5};
+		int[] arr2= {10,12,13,5};
+		
+		duplicatevalue(arr, arr2);
+		
+
+	}
+	
+	public static boolean duplicatevalue(int[] arr, int[] arr2)
+	{
+		for(int c:arr)
+		{
+			for(int d:arr2)
+			{
+				if(arr[c]==arr2[d])
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
+}

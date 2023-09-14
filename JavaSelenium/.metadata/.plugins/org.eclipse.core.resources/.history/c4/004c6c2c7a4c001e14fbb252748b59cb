@@ -1,0 +1,49 @@
+
+public class VictoriaSecrets {
+
+	public static void main(String[] args) {
+		
+		
+		//input:- "ABC" And "PQRST"
+		//OUTPUT:- APBQCRST
+		
+		String str1="ABCDEFG";
+		String str2="PQRST";
+		String str3="";
+		
+		int length=str1.length();
+		int length1=str2.length();
+		
+		if(length1>length)
+		{
+		for(int i=0;i<length1;i++)
+		{
+			if(i<length)
+			{
+				str3=str3+str1.charAt(i)+str2.charAt(i);
+			}else {
+				str3=str3+str2.charAt(i);
+			}
+		}
+		}else {
+			
+			for(int i=0;i<length;i++)
+			{
+				if(i<length1)
+				{
+					str3=str3+str1.charAt(i)+str2.charAt(i);
+				}else {
+					str3=str3+str2.charAt(i);
+				}
+			}
+		
+		}
+		
+		
+		System.out.print(str3);
+		
+		
+
+	}
+
+}
